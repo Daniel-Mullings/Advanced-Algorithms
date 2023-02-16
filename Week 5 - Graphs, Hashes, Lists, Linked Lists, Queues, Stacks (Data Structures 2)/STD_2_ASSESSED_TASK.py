@@ -94,10 +94,8 @@ class BinaryTree:
         lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
         return lines, n + m + u, max(p, q) + 2, n + u // 2
 
-    #Start of Daniel Mullings Code Implementation
-
     #Define method called "find_i" to iteratively search Binary Tree to find target value w/ Two parameters:
-    #"self" =  Object the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
+    #"self" = Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
     def find_i(self, target):
 
         #Set the "cur_node" (Current Node) value to the "Root Node" of the Binary Tree
@@ -114,13 +112,12 @@ class BinaryTree:
             if cur_node.data == target:
                 return True
             
-            #Else if the "cur_node" value is greater than "target" value
+            #Else if the "cur_node" value greater than "target" value
             #Set the "cur_node" value to the left child node of the current node and continue searching in left sub-tree
             elif cur_node.data > target:
                 cur_node = cur_node.left
             
-            #Else the "cur_node" value is less than "target" value
-            #Set the "cur_node" value to the right child node of the current node and continue searching in right sub-tree
+            # Else set the "cur_node" value to the right child node of the current node and continue searching in right sub-tree
             else:
                 cur_node = cur_node.right
 
@@ -128,12 +125,12 @@ class BinaryTree:
         return False
 
     #Define method called "find_r" to recursively search Binary Tree (Using a recursive sub-method) to find target value w/ Two parameters:
-    #"self" =  Object the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
+    #"self" = Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
     def find_r(self, target):
         #If "self.root" value is not "None" (i.e. Exists), exexute the "if" code block
         if self.root:
             #If "._find_r" sub-method returns "True" after recursively searching instance of "BinaryTree" object class for "target" value starting from the "self.root" (Root Node), 
-            #Return "True" to caller, otherwise Return "False" to caller
+            #Return "True" to caller, otherwise return "False" to caller
             if self._find_r(target, self.root):
                 return True
             return False
@@ -142,17 +139,17 @@ class BinaryTree:
         else:
             return None
 
-    #Define sub-method called "_find_r" to recursively search Binary Tree to find target value w/ Three parameters
-    #"self" =  Object the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class, 
+    #Define sub-method called "_find_r" to recursively search Binary Tree to find target value w/ Three parameters:
+    #"self" = Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class, 
     #"cur_node" = Current Node we are at within Binary Tree
     def _find_r(self, target, cur_node):
-        #If the "target" value is greater than the "cur_node" value AND the right child node of the "cur_node", 
+        #If the "target" value greater than the "cur_node" value AND the right child node of the "cur_node", 
         #Recursilvy search for the "target" value from the right child node of the current node, continuing the search in the right sub-tree
         #Return the resulting return value of that sub-method call to caller
         if target > cur_node.data and cur_node.right:
             return self._find_r(target, cur_node.right)
         
-        #Else if the "target" value is less than the "cur_node" value AND the left child node of the "cur_node", 
+        #Else if the "target" value less than the "cur_node" value AND the left child node of the "cur_node", 
         #Recursilvy search for the "target" value from the left child node of the current node, continuing the search in the left sub-tree
         #Return the resulting return value of that sub-method call to caller
         elif target < cur_node.data and cur_node.left:
@@ -161,8 +158,6 @@ class BinaryTree:
         #If the "target" value is equal to the "cur_node" value, return "True" to caller
         if target == cur_node.data:
             return True
-
-    #End of Daniel Mullings Code Implementation
 
 #Example calls, which construct and display the tree       
 bst = BinaryTree()
