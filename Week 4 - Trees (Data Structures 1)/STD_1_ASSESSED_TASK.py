@@ -1,7 +1,7 @@
 #!Section Start - Implementation of Advanced Algorithms - Standard 1 Assessed Task
 #!Author: Daniel Mullings
 
-#Define List called 'A', containing 6 unsorted integer values
+#Initalize List 'A' with 6 unsorted integer values
 A = [11, 22, 14, 67, 2, 9]
 
 #Define function called "Selection_Sort" to sort Lists (Smallest to Largest) w/ One parameter:
@@ -25,11 +25,11 @@ def Selection_Sort(listToSort):
 #"listToSort" = Unsorted List to be sorted, 'i' = 'i'-th element currently at in List to be sorted, 
 #"minn" = "minn"-th element containing smallest value in unsorted section of List
 def Swap(listToSort, i, minn):
-    #Store the 'i'-th element in a variable called "i_temp"
+    #Store 'i'-th element in variable called "i_temp"
     i_temp = listToSort[i]
-    #Overwrite the 'i'-th element with the value of the "minn"-th element
+    #Overwrite 'i'-th element with value of "minn"-th element
     listToSort[i] = A[minn]
-    #Overwrite the "minn"-th element with the value of the "i-temp"-th element
+    #Overwrite "minn"-th element with value of "i-temp"-th element
     listToSort[minn] = i_temp
 
 #Printing unsorted List before being sorted using "Selection_Sort" function

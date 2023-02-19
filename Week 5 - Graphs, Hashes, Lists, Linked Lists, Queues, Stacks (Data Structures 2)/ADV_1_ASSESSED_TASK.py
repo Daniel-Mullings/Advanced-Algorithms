@@ -16,16 +16,14 @@ Basic BST code for inserting (i.e. building) and printing a tree
 
 import math
 
-#Node class
-
+""" Node class """
 class Node:
     def __init__(self, data = None):
         self.data = data
         self.left = None
         self.right = None
 
-#BST class with insert and display methods. display pretty prints the tree
-
+""" BST class with insert and display methods, display pretty prints the tree """
 class BinaryTree:
     def __init__(self):
         self.root = None
@@ -53,16 +51,16 @@ class BinaryTree:
     #!Section Start - Implementation of Advanced Algorithms - Advanced 1 Assessed Task
     #!Author: Daniel Mullings
 
-    #Define method called "IF_LEFT_AND_RIGHT" to remove parent node with left and right child w/ Two parameters@
+    #Define method called "IF_LEFT_AND_RIGHT" to remove parent node with left and right child w/ Two parameters:
     #"self" =  Instance of "BinaryTree" object class the method is called from is the argument, "node" = Node to be removed which is parent of left and right child
     def IF_LEFT_AND_RIGHT(self, node):
 
-        #Initialize variable "delNodeParent" with the value "node", responsible for storing parent node to be deleted
+        #Initialize variable "delNodeParent" with value "node", responsible for storing parent node to be deleted
         #Initialize variable "delNode" with right child node of current node, responsible for storing child node to be deleted
         delNodeParent = node
         delNode = node.right
 
-        #While left child node of "delNode" node exists, execute the "while" code block
+        #While left child node of "delNode" node exists, execute "while" code block
         while delNode.left:
             #Set "delNodeParent" to "delNode"
             delNodeParent = delNode
@@ -93,22 +91,22 @@ class BinaryTree:
     #Define method called "remove" to iteratively search Binary Tree to find target value and remove Node w/ Two parameters:
     #"self" =  Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
     def remove(self, target):
-        #If the "root" node is "None" (i.e. Doesn’t Exist), return "False" to caller
+        #If "root" node is "None" (i.e. Doesn’t Exist), return "False" to caller
         if self.root is None:
             return False
         
-        #Else if "root" node value is equal to "target" value, execute the "elif" code block
+        #Else if "root" node value equal to "target" value, execute "elif" code block
         elif self.root.data == target:
             #If the "root" node has no child node, remove "root" node (i.e. Cessation of Binary Tree existence)
             if self.root.left is None and self.root.right is None:
                 self.root = None
-            #Else if the "root" node has only a left child node, set "root" node to left child node
+            #Else if "root" node has only a left child node, set "root" node to left child node
             elif self.root.left and self.root.right is None:
                 self.root = self.root.left
-            #Else if the "root" node has only a right child node, set "root" node to right child node
+            #Else if "root" node has only a right child node, set "root" node to right child node
             elif self.root.left is None and self.root.right:
                 self.root = self.root.right
-            #Else if the "root" node has a right and left child node, call "IF_LEFT_AND_RIGHT" method with "root" node as argument
+            #Else if "root" node has a right and left child node, call "IF_LEFT_AND_RIGHT" method with "root" node as argument
             #"IF_LEFT_AND_RIGHT" method handles removal of "root" parent node with left and right child whilst preserving Binary Tree structure
             elif self.root.left and self.root.right:
                 self.IF_LEFT_AND_RIGHT(self.root)
@@ -118,19 +116,19 @@ class BinaryTree:
         #Initialize variable "node" with value "self.root", responsible for storing current node
         node = self.root
 
-        #While "node" exists and "node" value is not equal to "target" value, execute the "while" code block
+        #While "node" exists and "node" value not equal to "target" value, execute "while" code block
         while node and node.data != target:
             #Set the "parent" node to the current "node"
             parent = node
-            #If "target" value greater than "node" value set "node" to left child node
+            #If "target" value greater than "node" value, set "node" to left child node
             if target < node.data:
                 node = node.left
-            #Else if "target" value less than "node" value set "node" to right child node
+            #Else if "target" value less than "node" value, set "node" to right child node
             elif target > node.data:
                 node = node.right
 
         #Case 1: Target Not Found
-        #If "node" is "None" or "node" value not equal to "target", return False to caller
+        #If "node" is "None" or "node" value not equal to "target" value, return False to caller
         if node is None or node.data != target:
             return False
         
@@ -171,7 +169,7 @@ class BinaryTree:
             return True
 
         #Case 5: Target has left and right Child
-        #If current node value equal to "target" value, call "IF_LEFT_AND_RIGHT" method with current node as argument
+        #If current node value equal to "target" value, call "IF_LEFT_AND_RIGHT" method with current "node" as argument
         #"IF_LEFT_AND_RIGHT" method handles removal of parent node with left and right child whilst preserving Binary Tree structure
         else:
             self.IF_LEFT_AND_RIGHT(node)
@@ -224,7 +222,7 @@ class BinaryTree:
         lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
         return lines, n + m + u, max(p, q) + 2, n + u // 2
 
-#Example calls, which construct and display the tree
+#Example calls, which construct and display the binary tree
 bst = BinaryTree()
 bst.insert(4)
 bst.insert(2)

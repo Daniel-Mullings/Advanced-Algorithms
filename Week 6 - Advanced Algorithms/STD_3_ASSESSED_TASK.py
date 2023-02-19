@@ -18,12 +18,12 @@ class Graph(object):
     #Define method called "AddVertex" to add a vertex to the adjacency matrix w/ One parameters:
     #"self" = Instance of "Graph" object class the method is called from is the argument
     def AddVertex(self):
-        #For each row in the adjacency matrix, append an additional element with the value '0', representing the vertex's edge connection
+        #For each row in adjacency matrix, append an additional element with value '0', representing the vertex's edge connection
         for row in self.adjMatrix:
             row.append(0)
-        #Increment "self.numberOfVertex" by one, representing increased size of adjacency matrix
+        #Increment "self.numberOfVertex" by '1', representing increased size of adjacency matrix
         self.numberOfVertex += 1
-        #Append a new row to the adjacency matrix, with amount of elements the equalt to "self.numberOfVertex", with the value '0', representing the vertex's edge connection
+        #Append new row to the adjacency matrix, with amount of elements the equal to "self.numberOfVertex", with the value '0', representing the vertex's edge connection
         self.adjMatrix.append([0] * self.numberOfVertex)
 
     #Define method called "AddEdge" to add an edges between two vertices within the adjacency matrix w/ Three parameters:
@@ -35,9 +35,9 @@ class Graph(object):
         if vertex1 >= self.numberOfVertex or vertex2 >= self.numberOfVertex:
             print("Vertex pair (" + str(vertex1) + ", " + str(vertex2) + "): " + "Does not exist")
         else:
-            #Set the value for the edge between two vertices in the adjacency matrix, represented as a (2D-Array) to 1 (1 = True (For edge state))
+            #Set value for the edge between two vertices in the adjacency matrix, represented as (2D-Array) to 1 (1 = True (For edge state))
             self.adjMatrix[vertex1 - 1][vertex2 - 1] = 1
-            #Set the value for the edge between two vertices in the adjacency matrix, represented as a (2D-Array) to 1 (1 = True (For edge state)) 
+            #Set value for the edge between two vertices in the adjacency matrix, represented as (2D-Array) to 1 (1 = True (For edge state)) 
             #(We do this for the mirror of the vertex pair as this adjacency matrix is undirected, unweighted)
             self.adjMatrix[vertex2 - 1][vertex1 - 1] = 1
 
@@ -52,9 +52,9 @@ class Graph(object):
         if vertex1 >= self.numberOfVertex or vertex2 >= self.numberOfVertex:
             print("Vertex pair (" + str(vertex1) + ", " + str(vertex2) + "): " + "Does not exist")
         else:
-            #Set the value for the edge between two vertices  in the adjacency matrix, represented as a (2D-Array) to 0 (0 = False (For edge state))
+            #Set value for the edge between two vertices in the adjacency matrix, represented as (2D-Array) to 0 (0 = False (For edge state))
             self.adjMatrix[vertex1 - 1][vertex2 - 1] = 0
-            #Set the value for the edge between two vertices  in the adjacency matrix, represented as a (2D-Array) to 0 (0 = False (For edge state)) 
+            #Set value for the edge between two vertices in the adjacency matrix, represented as (2D-Array) to 0 (0 = False (For edge state)) 
             #(We do this for the mirror of the vertex pair as this adjacency matrix is undirected, unweighted)
             self.adjMatrix[vertex2 - 1][vertex1 - 1] = 0
 
@@ -87,10 +87,10 @@ class Graph(object):
         #Empty "print()" statement insert newline for subsequent "print()" statements after using "end=""" parameter
         print()
 
-        #For each "row" in "adjMatrix" print "rowNum", "end=" "" parameter to add whitespace between "row" header and "row" content and prevent newline for subsequent "print()" statements
+        #For each "row" in "adjMatrix" print "rowNum" value, "end=" "" parameter to add whitespace between "row" header and "row" content and prevent newline for subsequent "print()" statements
         for row in self.adjMatrix:
             print (str(rowNum), end=" ")
-            #For each "edgeVal" in "row" print "edgeVal", "end=" "" parameter to add whitespace between each "edgeVal" and prevent newline for subsequent "print()" statements
+            #For each "edgeVal" in "row" print "edgeVal" value, "end=" "" parameter to add whitespace between each "edgeVal" value and prevent newline for subsequent "print()" statements
             for edgeVal in row:
                 print(str(edgeVal), end=" ")
             #"rowNum" incremented by '1' for each row header

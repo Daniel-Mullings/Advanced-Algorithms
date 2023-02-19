@@ -23,7 +23,7 @@ class Node:
         self.left = None
         self.right = None
 
-""" BST class with insert and display methods. display pretty prints the tree """
+""" BST class with insert and display methods, display pretty prints the tree """
 class BinaryTree:
     def __init__(self):
         self.root = None
@@ -101,26 +101,26 @@ class BinaryTree:
     #"self" = Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class
     def find_i(self, target):
 
-        #Set the "cur_node" (Current Node) value to the "Root Node" of the Binary Tree
+        #Initalize variable "cur_node" (Current Node) with value "self.root (Root Node)" of the Binary Tree
         cur_node = self.root
 
         #If the "cur_node" value is "None", return "None" to caller
         if cur_node == None:
             return None
 
-        #While the "cur_node" value is not "None", execute the "while" code block
+        #While "cur_node" value is not "None", execute the "while" code block
         while cur_node != None:
 
-            #If the "cur_node" value is equal to "target" value, return "True" to caller
+            #If "cur_node" value equal to "target" value, return "True" to caller
             if cur_node.data == target:
                 return True
             
-            #Else if the "cur_node" value greater than "target" value
-            #Set the "cur_node" value to the left child node of the current node and continue searching in left sub-tree
+            #Else if "cur_node" value greater than "target" value
+            #Set "cur_node" value to left child node of current node and continue searching in left sub-tree
             elif cur_node.data > target:
                 cur_node = cur_node.left
             
-            # Else set the "cur_node" value to the right child node of the current node and continue searching in right sub-tree
+            #Else set "cur_node" value to right child node of current node and continue searching in right sub-tree
             else:
                 cur_node = cur_node.right
 
@@ -146,25 +146,25 @@ class BinaryTree:
     #"self" = Instance of "BinaryTree" object class the method is called from is the argument, "target" = Value to search for in instance of "BinaryTree" object class, 
     #"cur_node" = Current Node we are at within Binary Tree
     def _find_r(self, target, cur_node):
-        #If the "target" value greater than the "cur_node" value AND the right child node of the "cur_node", 
-        #Recursilvy search for the "target" value from the right child node of the current node, continuing the search in the right sub-tree
-        #Return the resulting return value of that sub-method call to caller
+        #If "target" value greater than "cur_node" value AND right child node of "cur_node", 
+        #Recursilvy search for "target" value from right child node of the current node, continuing the search in right sub-tree
+        #Return the resulting return value of sub-method call to caller
         if target > cur_node.data and cur_node.right:
             return self._find_r(target, cur_node.right)
         
-        #Else if the "target" value less than the "cur_node" value AND the left child node of the "cur_node", 
-        #Recursilvy search for the "target" value from the left child node of the current node, continuing the search in the left sub-tree
-        #Return the resulting return value of that sub-method call to caller
+        #Else if "target" value less than "cur_node" value AND left child node of "cur_node", 
+        #Recursilvy search for "target" value from left child node of current node, continuing the search in left sub-tree
+        #Return the resulting return value of sub-method call to caller
         elif target < cur_node.data and cur_node.left:
             return self._find_r(target, cur_node.left)
         
-        #If the "target" value is equal to the "cur_node" value, return "True" to caller
+        #If "target" value is equal to the "cur_node" value, return "True" to caller
         if target == cur_node.data:
             return True
 
     #!Section End - Implementation of Advanced Algorithms - Standard 2 Assessed Task
 
-#Example calls, which construct and display the tree       
+#Example calls, which construct and display the binary tree       
 bst = BinaryTree()
 bst.insert(4)
 bst.insert(2)
@@ -186,12 +186,10 @@ bst.insert(7)
 
 bst.display(bst.root)
 
-#Testing iterative find ("find_i") method with values both present and not present in "bst" instance of "BinaryTree" object class and print the return value; "True", "False" or "None", 
-#Dependent on value presence in Binary Tree ("bst" instance of "BinaryTree" object class)
+#Testing iterative find ("find_i") method with values both present and not present in "bst" instance of "BinaryTree" object class and print the return value; "True", "False" or "None"
 print("Is value '7' present in \"bst\" object insance of \"Binary Tree\": " + str(bst.find_i(7)))
 print("Is value '8' present in \"bst\" object insance of \"Binary Tree\": " + str(bst.find_i(8)) + '\n')
 
-#Testing recursive find ("find_r" w/ "_find_r" sub-method) method with values both present and not present in "bst" instance of "BinaryTree" object class and print the return value; "True", "False" or "None", 
-#Dependent on value presence in Binary Tree ("bst" instance of "BinaryTree" object class)
+#Testing recursive find ("find_r" w/ "_find_r" sub-method) method with values both present and not present in "bst" instance of "BinaryTree" object class and print the return value; "True", "False" or "None"
 print("Is value '7' present in \"bst\" object insance of \"Binary Tree\": " + str(bst.find_r(7)))
 print("Is value '8' present in \"bst\" object insance of \"Binary Tree\": " + str(bst.find_r(8)) + '\n')

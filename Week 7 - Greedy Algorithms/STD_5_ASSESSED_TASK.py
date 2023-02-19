@@ -45,15 +45,15 @@ class SLinkedList:
                 #Set the node after the node before (val_before) "insertedNode" to "insertedNode"
                 val_before.nextval = insertedNode
 
-                #If "headval" is equal to '0' (i.e. Empty), set "last" to "instertedNode" and set "heaqval" to "last"
+                #If "headval" equal to '0' (i.e. Empty), set "last" to "instertedNode" and set "heaqval" to "last"
                 if self.headval == 0:
                     self.last = insertedNode
                     self.headval = self.last
 
-                #Else if "last" is equal to "val_before.nextval", set "last" to "insertedNode"
+                #Else if "last" equal to "val_before.nextval", set "last" to "insertedNode"
                 elif self.last == val_before.nextval:
                     self.last = insertedNode
-        
+
             #!Section End - Implementation of Advanced Algorithms - Standard 5 Assessed Task
 
 list = SLinkedList()
