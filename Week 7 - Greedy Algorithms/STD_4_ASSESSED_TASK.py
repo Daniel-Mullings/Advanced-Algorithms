@@ -37,11 +37,11 @@ class Graph():
                 #!Section Start - Implementation of Advanced Algorithms - Standard 4 Assessed Task
                 #!Author: Daniel Mullings
 
-                if (self.graph[u][v] > 0                        #If edge from "u" to connected node "v" is greater than '0' (If there is an edge)
+                if (self.graph[u][v] > 0                        #If edge from "u" to connected node "v" greater than '0' (If there is an edge)
                     and mstSet[v] == False                      #And "mstSet[v]" is unreached
-                    and key[v] > self.graph[u][v]):             #And "key[v]"" is greater than the edge cost
+                    and key[v] > self.graph[u][v]):             #And "key[v]" greater than the edge cost
                     
-                                                                #(Only if the current edge cost is greater will need to change)
+                                                                #(Only if the current edge cost greater will need to change)
                     key[v] = self.graph[u][v]                   #"key[v]"" takes edge cost
 
                 #!Section End - Implementation of Advanced Algorithms - Standard 1 Assessed Task
