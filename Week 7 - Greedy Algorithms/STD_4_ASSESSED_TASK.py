@@ -40,15 +40,20 @@ class Graph():
             mstSet[u] = True                                    #"mstSet" at index of node is set to "True"
             for v in range(self.V):                             #Go through all vertices
 
-                #!Section Start - Implementation of Advanced Algorithms - Standard Assessed Task 4
-                #!Author: Daniel Mullings
+                '''Section Start - Implementation of Advanced Algorithms - Standard Assessed Task 4
+                   Author: Daniel Mullings
+
+                   primMST: Finish implementation of function to find minimum spanning tree
+                   Input: Adjacency matrix from instance of object class that called method; Output: Minimum spanning tree
+                '''
                 if (self.graph[u][v] > 0                        #If edge 'u' to connected node 'v' is greater than '0' (If there is an edge)
                     and mstSet[v] == False                      #And "mstSet[v]" is unreached
                     and key[v] > self.graph[u][v]):             #And "key[v]"" is greater than the edge cost
                     key[v] = self.graph[u][v]                   #Set "key[v]" to edge cost (Only if the current edge cost is greater will need to change)
-                #!Section End - Implementation of Advanced Algorithms - Standard Assessed Task 4
-
                     parent[v] = u                               #"parent[v]" is index of node; so List of parents (Nodes) is the MST
+                '''!Section End - Implementation of Advanced Algorithms - Standard Assessed Task 4
+                '''
+
         self.printMST(parent)                                   #Print List of parents, i.e. the MST
 
 g = Graph(5)                                                    #Initalise instance of object class "Graph" called 'g', with 5 vertices in adjacency matrix

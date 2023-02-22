@@ -32,8 +32,15 @@ class SLinkedList:
             return
         else:
 
-            #!Section Start - Implementation of Advanced Algorithms - Standard Assessed Task 5
-            #!Author: Daniel Mullings
+            '''!Section Start - Implementation of Advanced Algorithms - Standard Assessed Task 5
+            !Author: Daniel Mullings
+
+            Insert: Finish implementation of function to insert element into linked list
+            Input: Linked list from instance of object class that called method, 
+                   Element to insert before, Value of element to insert 
+            Output: Element inserted into linked list
+            '''
+
             insertedNode = Node(newdata)                        #Initialise instance of "Node" object class with "newdata"
 
             if insertedNode is not None:                        #If "insertedNode" is not equal "None" (i.e. Empty), execute "if" statement code block
@@ -45,9 +52,10 @@ class SLinkedList:
                     self.headval = self.last                    #Set "heaqval" to "last"
 
                 
-                elif self.last == val_before.nextval:           #Else if "last" equal to "val_before.nextval"
-                    self.last = insertedNode                    #Set "last" to "insertedNode"
-            #!Section End - Implementation of Advanced Algorithms - Standard Assessed Task 5
+            elif self.last == val_before.nextval:               #Else if "last" equal to "val_before.nextval"
+                self.last = insertedNode                        #Set "last" to "insertedNode"
+            '''!Section End - Implementation of Advanced Algorithms - Standard Assessed Task 5
+            '''
 
 list = SLinkedList()
 list.headval = Node("Mon")
@@ -60,7 +68,8 @@ list.headval.nextval = e2
 e2.nextval = e3
 e3.nextval = e4
 e4.nextval = e5
-list.AtEnd("Sun")
+list.AtEnd("Sun\n")
 
+list.listprint()
 list.Insert(e2, "Weds")                                         #Test "Insert" method with node to insert after ("e2") and value ("Weds) in "list" instance of "SLinkedList" object class
 list.listprint()
