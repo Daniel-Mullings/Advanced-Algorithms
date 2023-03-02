@@ -1,5 +1,4 @@
-"""
-Basic BST code for inserting (i.e. building) and printing a tree
+''' Basic BST code for inserting (i.e. building) and printing a tree
 
     Your ***second standard viva task*** (of 5) will be to implement a find method into
     the class BinaryTree from pseudocode. See the lab task sheet for Week 5. 
@@ -12,19 +11,19 @@ Basic BST code for inserting (i.e. building) and printing a tree
 
     Since the given code is in python it is strongly suggested you stay with python; but
     if you want to reimplement as C++ this is also OK (see the Week 5 lab sheet guidance). 
-"""
+'''
 
 import math
 from multiprocessing import parent_process
 
-""" Node class """
+'''Node class'''
 class Node:
     def __init__(self, data = None):
         self.data = data
         self.left = None
         self.right = None
 
-""" BST class with insert and display methods, display pretty prints the tree """
+'''BST class with insert and display methods, display pretty prints the tree'''
 class BinaryTree:
     def __init__(self):
         self.root = None

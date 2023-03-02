@@ -3,8 +3,8 @@ import sys
 
 class Graph():
     def __init__(self, size):
-        self.edges = defaultdict(list)                              #dictionary of all connected nodes e.g. {'X': ['A', 'B', 'C', 'E'], ...}
-        self.weights = {}                                           #dictionary of edges and weights e.g. {('X', 'A'): 7, ('X', 'B'): 2, ...}
+        self.edges = defaultdict(list)                          #Dictionary of all connected nodes e.g. {'X': ['A', 'B', 'C', 'E'], ...}
+        self.weights = {}                                       #Dictionary of edges and weights e.g. {('X', 'A'): 7, ('X', 'B'): 2, ...}
         self.size = size
         self.dist = []
         for i in range(size):
@@ -13,13 +13,11 @@ class Graph():
         for i in range(size):
             self.previous.append(None)
         
-    
-    def add_edge(self, from_node, to_node, weight):                 #bidirectional
+    def add_edge(self, from_node, to_node, weight):             #Bi-Directional
         self.edges[from_node].append(to_node)
         self.edges[to_node].append(from_node)
         self.weights[(from_node, to_node)] = weight
         self.weights[(to_node, from_node)] = weight
-
 
     def findSmallestNode(self): 
         smallest = self.dist[self.getIndex(self.Q[0])]
@@ -32,12 +30,10 @@ class Graph():
                     result = self.getIndex(node)
         return result
             
-
     def getIndex(self, neighbour):
         for i in range(len(self.unpoppedQ)):
             if neighbour == self.unpoppedQ[i]:
                 return i
-
 
     def getPopPosition(self, uNode):
         result = 0
@@ -46,7 +42,6 @@ class Graph():
                 return i
         return result
 
-
     def getUnvisitedNodes(self, uNode):
         resultList = []
         allNeighbours = self.edges[uNode]
@@ -54,7 +49,6 @@ class Graph():
             if neighbour in self.Q:
                 resultList.append(neighbour)
         return resultList          
-
 
     def dijsktra(self, start, end):                                 
         self.Q = []
@@ -74,16 +68,22 @@ class Graph():
 
             uNode = self.unpoppedQ[u]
 
+            '''!Section Start - Implementation of Advanced Algorithms - Advanced Assessed Task 2
+               !Author: Daniel Mullings
+            '''
 
-        #FIND NEIGHBOUR WITH SMALLEST DISTANCE; ADD RESULTS TO PREVIOUS LIST
-        self.Q.pop(self.getPopPosition(uNode))
-        neighbours = self.getUnvisitedNodes(uNode)
-        for neighbour in neighbours:
-            alt = self.dist[u] + self.weights[(uNode, neighbour)]
-            if alt < self.dist[self.getIndex(neighbour)]:
-                self.dist[self.getIndex(neighbour)] = alt
-                self.previous[self.getIndex(neighbour)] = uNode
+            '''!Finish implementation of method, finding neighbour w/ Smallest Distance; Add results to previous list
+            '''
+            self.Q.pop(self.getPopPosition(uNode))              #Remove the vertex from 'Q'
+            for v in self.getUnvisitedNodes(uNode):             #Find the connected nodes (Neighbours)
+                alt = self.dist[u] + self.weights[(uNode, v)]   #Add distance of 'u', to cost from 'u' to neighbour, assign to "alt"
 
+                if alt < self.dist[self.getIndex(v)]:           #If "alt" less than neighbour distance
+                    self.dist[self.getIndex(v)] = alt           #Assign "alt" to neighbour distance
+                    self.previous[self.getIndex(v)] = uNode     #Assign 'u' to previous "[v]"
+
+            '''!Section End - Implementation of Advanced Algorithms - Advanced Assessed Task 2
+            '''
             
         shortest_path = []
         shortest_path.insert(0, end)
@@ -91,11 +91,9 @@ class Graph():
         while self.previous[u] != None:
             shortest_path.insert(0, self.previous[u])                           
             u = self.getIndex(self.previous[u])
-        return shortest_path
-
+        return shortest_path, alt
 
 graph = Graph(8)
-
 
 edges = [
     ('O', 'A', 2),
@@ -114,9 +112,7 @@ edges = [
     ('F', 'T', 3),
 ]
     
-
 for edge in edges:
     graph.add_edge(*edge)
-
 
 print(graph.dijsktra('O', 'T'))
