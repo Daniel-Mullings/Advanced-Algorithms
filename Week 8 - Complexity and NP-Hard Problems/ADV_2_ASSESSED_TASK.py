@@ -74,13 +74,13 @@ class Graph():
 
             '''!Finish implementation of method, finding neighbour w/ Smallest Distance; Add results to previous list
             '''
-            self.Q.pop(self.getPopPosition(uNode))              #Remove the vertex from 'Q'
-            for v in self.getUnvisitedNodes(uNode):             #Find the connected nodes (Neighbours)
-                alt = self.dist[u] + self.weights[(uNode, v)]   #Add distance of 'u', to cost from 'u' to neighbour, assign to "alt"
+            self.Q.pop(self.getPopPosition(uNode))              #Remove "uNode" from 'Q'
+            for v in self.getUnvisitedNodes(uNode):             #Find the connected nodes (Neighbours) 'v'
+                alt = self.dist[u] + self.weights[(uNode, v)]   #Add distance of 'u', to cost from "uNode" to 'v', assign to "alt"
 
-                if alt < self.dist[self.getIndex(v)]:           #If "alt" less than neighbour distance
-                    self.dist[self.getIndex(v)] = alt           #Assign "alt" to neighbour distance
-                    self.previous[self.getIndex(v)] = uNode     #Assign 'u' to previous "[v]"
+                if alt < self.dist[self.getIndex(v)]:           #If "alt" less than 'v' distance
+                    self.dist[self.getIndex(v)] = alt           #Assign "alt" to 'v' distance
+                    self.previous[self.getIndex(v)] = uNode     #Assign "uNode" to node previous to 'v'
 
             '''!Section End - Implementation of Advanced Algorithms - Advanced Assessed Task 2
             '''
