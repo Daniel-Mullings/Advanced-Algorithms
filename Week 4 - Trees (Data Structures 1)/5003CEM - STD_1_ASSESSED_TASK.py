@@ -22,7 +22,7 @@ def SelectionSort(listToSort):
    Output: No return, List with two element values swapped
 '''
 def Swap(listToSort, x, minn):
-    x_temp = listToSort[x]                                      #Set "x_temp" to 'x'-th element in ìlistToSortî
+    x_temp = listToSort[x]                                      #Set "x_temp" to 'x'-th element in ‚ÄúlistToSort‚Äù
     listToSort[x] = listToSort[minn]                            #Overwrite 'x'-th element with value of "minn"-th element
     listToSort[minn] = x_temp                                   #Overwrite "minn"-th element with value of "x-temp"-th element
 
