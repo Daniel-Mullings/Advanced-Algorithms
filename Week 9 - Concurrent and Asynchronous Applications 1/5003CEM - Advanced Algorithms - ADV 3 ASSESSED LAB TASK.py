@@ -11,7 +11,7 @@ URLs = ['http://www.foxnews.com/',
         'http://www.cnn.com/',
         'http://www.derspiegel.de/',
         'http://www.bbc.co.uk/',
-        'https://theguardian.com',]                             #List of URL's to be accessed to get headlines
+        'https://theguardian.com',]                             #List of URL's to be accessed to get article headlines
 
 
 
@@ -25,7 +25,7 @@ def non_concurrent_get_headlines():
         
         print('\n''The headlines from %s are' % url, '\n')      #Print statement detailing the current URL content being displayed, wildcard to replace '%s' with "url"
         for i in range(1,6):                                    #Iterate over the same code block 5 times, 'i' initialised with '1' and incremented after each loop
-            art = result.articles[i]                            #Initalise "art" with the 'i'-th element of result containing an article from "url"
+            art = result.articles[i]                            #Initalise "art" with the 'i'-th element of "result" containing an article from "url"
             art.download()                                      #Download article content as HTML
             art.parse()                                         #Parse (Extract) article content from downloaded HTML
             print(art.title)                                    #Print the title of the article
@@ -37,13 +37,13 @@ def concurrent_get_headlines():
 
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-                                                                #"executor" is a pool consisting of a maximum of 5 threads, "executor" executes tasks in parallel
+                                                                #"executor" is a pool consisting of a maximum of 5 threads, "executor" executes tasks asynchronously 
         future_to_url = {executor.submit(newspaper.build, url, memoize_articles=False): url for url in URLs}
-                                                                #Initalise "future_to_url" as dictionary with new instances of the "newspaper" object using "build" method 
+                                                                #Initalise "future_to_url" as dictionary with new instances of the "newspaper" object using "build()" method 
                                                                 #for each "url" from "URLs" as arguments
 
         for future in concurrent.futures.as_completed(future_to_url):
-                                                                #For each "future" in "future_to_url" execute loop code block for each "future" in parallel 
+                                                                #For each "future" in "future_to_url" execute loop code block for each "future" asynchronously  
                                                                 #as the "newspaper" objects are built using each "url" in "URLs" using ".as_completed()"
                                                                 #(Opposed to waiting for each "future" in "future_to_url" to have "newspaper" object built)
 
@@ -55,7 +55,7 @@ def concurrent_get_headlines():
                                                                 #Print statement detailing the current URL content being displayed, wildcard to replace '%s' with "url"
 
                 for i in range(1, 6):                           #Iterate over the same code block 5 times, 'i' initialised with '1' and incremented after each loop
-                    art = result.articles[i]                    #Initalise "art" with the 'i'-th element of result containing an article from "url"
+                    art = result.articles[i]                    #Initalise "art" with the 'i'-th element of "result" containing an article from "url"
                     art.download()                              #Download article content as HTML
                     art.parse()                                 #Parse (Extract) article content from downloaded HTML
                     print(art.title)                            #Print the title of the article
