@@ -47,7 +47,7 @@ def concurrent_get_headlines():
                                                                 #as the "newspaper" objects are built using each "url" in "URLs" using ".as_completed()"
                                                                 #(Opposed to waiting for each "future" in "future_to_url" to have "newspaper" object built)
 
-            url = future_to_url[future]                         #Set "url" to the "url" of current completed "future" from "future_to_url"
+            url = future_to_url[future]                         #Set "url" to the URL of current completed "future" from "future_to_url"
             result = future.result()                            #Set "result" to each completed "future" as it is available
 
             with data_lock:                                     #Prevent access to "print()" by multiple threads at the same time, ensures articles are printed with headline they're associated with
