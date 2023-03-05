@@ -8,7 +8,7 @@ A = [11, 22, 14, 67, 2, 9]                                      #Initialise List
    Output: Returns sorted List "listToSort", Modifies List passed by reference as argument
 '''
 def SelectionSort(listToSort):
-    for x in range(len(listToSort) - 1):                        #Loop over List from beginning to end (-1 as index start at 0)
+    for x in range(len(listToSort) - 1):                        #For each element 'x' in "listToSort" (-1 as index start at 0)
         minn = x                                                #Assume 'x'-th element is the smallest in the unsorted List
         for y in range(x + 1, len(listToSort)):                 #Loop over the rightmost elements of 'x'-th element
             if listToSort[y] < listToSort[minn]:                #If any 'y'-th element less than the 'x'-th element
