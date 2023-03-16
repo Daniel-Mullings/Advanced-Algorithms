@@ -195,5 +195,5 @@ bst.insert(5)
 bst.insert(7)
 
 bst.display(bst.root)                                           #Print binary tree of "bst" instance of "BinaryTree" object using "display" method (Before node removal)
-bst.remove(4)                                                   #Test iterative "remove" method with value present in "bst" instance of "BinaryTree" object
+bst.remove(6)                                                   #Test iterative "remove" method with value present in "bst" instance of "BinaryTree" object
 bst.display(bst.root)                                           #Print binary tree of "bst" instance of "BinaryTree" object using "display" method (After node removal)
